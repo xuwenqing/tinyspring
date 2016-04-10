@@ -1,4 +1,4 @@
-package tinyspring.springframework.core.io;
+package tinyspring.framework.core.io;
 
 /**
  * Created by wenqing on 2016/4/10.

@@ -1,6 +1,6 @@
 package tinyspring.framework.beans.factory.support;
 
-import tinyspring.springframework.core.io.Resource;
+import tinyspring.framework.core.io.Resource;
 import tinyspring.framework.beans.BeansException;
 
 /**

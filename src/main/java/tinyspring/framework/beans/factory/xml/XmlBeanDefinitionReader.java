@@ -1,7 +1,7 @@
 package tinyspring.framework.beans.factory.xml;
 
 import org.junit.Assert;
-import tinyspring.springframework.core.io.Resource;
+import tinyspring.framework.core.io.Resource;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import tinyspring.framework.beans.BeansException;

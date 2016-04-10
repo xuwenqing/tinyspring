@@ -2,7 +2,7 @@ package tinyspring.framework.beans.factory.xml;
 
 import tinyspring.framework.beans.BeansException;
 import tinyspring.framework.beans.factory.support.DefaultListableBeanFactory;
-import tinyspring.springframework.core.io.Resource;
+import tinyspring.framework.core.io.Resource;
 
 /**
  * Created by wenqing on 2016/4/10.

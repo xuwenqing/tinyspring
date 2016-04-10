@@ -1,4 +1,4 @@
-package tinyspring.springframework.core.io;
+package tinyspring.framework.core.io;
 
 
 import org.junit.Assert;
