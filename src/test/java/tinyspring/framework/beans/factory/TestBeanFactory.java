@@ -2,7 +2,8 @@ package tinyspring.framework.beans.factory;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.springframework.core.io.DefaultResourceLoader;
+import tinyspring.framework.beans.factory.xml.XmlBeanFactory;
+import tinyspring.springframework.core.io.DefaultResourceLoader;
 import tinyspring.framework.beans.PropertyValue;
 import tinyspring.framework.beans.PropertyValues;
 import tinyspring.framework.beans.factory.config.*;
@@ -11,12 +12,22 @@ import tinyspring.framework.beans.factory.support.DefaultListableBeanFactory;
 import tinyspring.framework.beans.factory.support.RootBeanDefinition;
 import tinyspring.framework.beans.factory.xml.XmlBeanDefinitionReader;
 
-import javax.annotation.Resource;
-
 public class TestBeanFactory {
 
     @Test
-    public void testXmlBeanFactory() throws Exception{
+    public void testXmlBeanFactory() {
+        XmlBeanFactory beanFactory = new XmlBeanFactory(new DefaultResourceLoader().getResource("beans.xml"));
+        addBeanPostProcessor(beanFactory);
+        xmlBeanDefinitionRegistry(beanFactory);
+        beanFactory.getBean("aware");
+        beanFactory.getBean("init");
+        HelloBean helloBean = (HelloBean) beanFactory.getBean("helloBean");
+        helloBean.hello();
+    }
+
+    @Ignore
+    @Test
+    public void testXmlDefaultBeanFactory() throws Exception{
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         addBeanPostProcessor(beanFactory);
         xmlBeanDefinitionRegistry(beanFactory);

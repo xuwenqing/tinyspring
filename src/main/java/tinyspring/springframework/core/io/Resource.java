@@ -1,4 +1,4 @@
-package org.springframework.core.io;
+package tinyspring.springframework.core.io;
 
 import java.io.IOException;
 import java.io.InputStream;
