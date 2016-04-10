@@ -10,11 +10,13 @@ public class RootBeanDefinition implements BeanDefinition {
 
     public RootBeanDefinition(String beanClass) {
         super();
+        propertyValues = new PropertyValues();
         setBeanClassName(beanClass);
     }
 
     public RootBeanDefinition(Class<?> beanClass) {
         super();
+        propertyValues = new PropertyValues();
         setBeanClass(beanClass);
     }
 
@@ -26,6 +28,11 @@ public class RootBeanDefinition implements BeanDefinition {
 
     public void setBeanClassName(String beanClassName) {
         this.beanClass = beanClassName;
+        try {
+            beanClass = Class.forName(beanClassName);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public PropertyValues getPropertyValues() {

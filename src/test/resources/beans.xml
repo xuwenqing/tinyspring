@@ -1,0 +1,11 @@
+<beans>
+    <bean id="helloBean" class="tinyspring.framework.beans.factory.HelloBean">
+        <property name="stringbean" value="xmlstringbean">
+        </property>
+        <property name="hello" ref="hello">
+        </property>
+    </bean>
+    <bean id="hello" class="tinyspring.framework.beans.factory.Hello"></bean>
+    <bean id="aware" class="tinyspring.framework.beans.factory.BeanAware"></bean>
+    <bean id="init" class="tinyspring.framework.beans.factory.InitMethod"></bean>
+</beans>

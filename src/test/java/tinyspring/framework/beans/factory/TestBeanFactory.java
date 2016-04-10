@@ -1,17 +1,39 @@
 package tinyspring.framework.beans.factory;
 
+import org.junit.Ignore;
 import org.junit.Test;
+import org.springframework.core.io.DefaultResourceLoader;
 import tinyspring.framework.beans.PropertyValue;
 import tinyspring.framework.beans.PropertyValues;
 import tinyspring.framework.beans.factory.config.*;
 import tinyspring.framework.beans.factory.support.BeanDefinitionRegistry;
 import tinyspring.framework.beans.factory.support.DefaultListableBeanFactory;
 import tinyspring.framework.beans.factory.support.RootBeanDefinition;
+import tinyspring.framework.beans.factory.xml.XmlBeanDefinitionReader;
+
+import javax.annotation.Resource;
 
 public class TestBeanFactory {
 
     @Test
-    public void initBeanFactory() {
+    public void testXmlBeanFactory() throws Exception{
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        addBeanPostProcessor(beanFactory);
+        xmlBeanDefinitionRegistry(beanFactory);
+        beanFactory.getBean("aware");
+        beanFactory.getBean("init");
+        HelloBean helloBean = (HelloBean) beanFactory.getBean("helloBean");
+        helloBean.hello();
+    }
+
+    public void xmlBeanDefinitionRegistry(BeanDefinitionRegistry registry) {
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(registry);
+        reader.loadBeanDefinitions(new DefaultResourceLoader().getResource("beans.xml"));
+    }
+
+    @Ignore
+    @Test
+    public void testCodeBeanFactory() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         registryAware(beanFactory);
         registryInit(beanFactory);
@@ -35,7 +57,7 @@ public class TestBeanFactory {
 
     public void registryAware(BeanDefinitionRegistry registry) {
         BeanDefinition bd_aware = new RootBeanDefinition(BeanAware.class);
-        registry.registerBeanDefinition("aware",bd_aware);
+        registry.registerBeanDefinition("aware", bd_aware);
     }
 
     public void beanDefinitionRegistry(BeanDefinitionRegistry registry) {
