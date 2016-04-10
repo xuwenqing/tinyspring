@@ -1,11 +1,16 @@
 package tinyspring.framework.beans.factory.support;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import tinyspring.framework.beans.factory.config.SingletonBeanRegistry;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
+
+    /** Logger available to subclasses */
+    protected final Log logger = LogFactory.getLog(getClass());
 
     private final Map<String, Object> singletonObjects = new ConcurrentHashMap<String, Object>(64);
 

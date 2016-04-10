@@ -3,9 +3,7 @@ package tinyspring.framework.beans.factory;
 import org.junit.Test;
 import tinyspring.framework.beans.PropertyValue;
 import tinyspring.framework.beans.PropertyValues;
-import tinyspring.framework.beans.factory.config.BeanDefinition;
-import tinyspring.framework.beans.factory.config.BeanReference;
-import tinyspring.framework.beans.factory.config.TypedStringValue;
+import tinyspring.framework.beans.factory.config.*;
 import tinyspring.framework.beans.factory.support.BeanDefinitionRegistry;
 import tinyspring.framework.beans.factory.support.DefaultListableBeanFactory;
 import tinyspring.framework.beans.factory.support.RootBeanDefinition;
@@ -15,9 +13,22 @@ public class TestBeanFactory {
     @Test
     public void initBeanFactory() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        registryAware(beanFactory);
+        addBeanPostProcessor(beanFactory);
         beanDefinitionRegistry(beanFactory);
+        beanFactory.getBean("aware");
         HelloBean helloBean = (HelloBean) beanFactory.getBean("helloBean");
         helloBean.hello();
+    }
+
+    public void addBeanPostProcessor(ConfigurableBeanFactory factory) {
+        BeanPostProcessor beanPostProcessor = new TestBeanPostProcessor();
+        factory.addBeanPostProcessor(beanPostProcessor);
+    }
+
+    public void registryAware(BeanDefinitionRegistry registry) {
+        BeanDefinition bd_aware = new RootBeanDefinition(BeanAware.class);
+        registry.registerBeanDefinition("aware",bd_aware);
     }
 
     public void beanDefinitionRegistry(BeanDefinitionRegistry registry) {
