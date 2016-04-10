@@ -14,9 +14,11 @@ public class TestBeanFactory {
     public void initBeanFactory() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         registryAware(beanFactory);
+        registryInit(beanFactory);
         addBeanPostProcessor(beanFactory);
         beanDefinitionRegistry(beanFactory);
         beanFactory.getBean("aware");
+        beanFactory.getBean("init");
         HelloBean helloBean = (HelloBean) beanFactory.getBean("helloBean");
         helloBean.hello();
     }
@@ -24,6 +26,11 @@ public class TestBeanFactory {
     public void addBeanPostProcessor(ConfigurableBeanFactory factory) {
         BeanPostProcessor beanPostProcessor = new TestBeanPostProcessor();
         factory.addBeanPostProcessor(beanPostProcessor);
+    }
+
+    public void registryInit(BeanDefinitionRegistry registry) {
+        BeanDefinition bd_init = new RootBeanDefinition(InitMethod.class);
+        registry.registerBeanDefinition("init", bd_init);
     }
 
     public void registryAware(BeanDefinitionRegistry registry) {

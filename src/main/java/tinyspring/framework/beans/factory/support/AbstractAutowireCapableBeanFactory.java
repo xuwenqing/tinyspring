@@ -2,6 +2,7 @@ package tinyspring.framework.beans.factory.support;
 
 import tinyspring.framework.beans.*;
 import tinyspring.framework.beans.factory.Aware;
+import tinyspring.framework.beans.factory.InitializingBean;
 import tinyspring.framework.beans.factory.config.AutowireCapableBeanFactory;
 import tinyspring.framework.beans.factory.config.BeanDefinition;
 import tinyspring.framework.beans.factory.config.BeanPostProcessor;
@@ -91,6 +92,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         invokeAwareMethods(beanName, bean);
         Object wrappedBean = bean;
         wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
+        invokeInitMethods(beanName, wrappedBean, mbd);
         wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
         return wrappedBean;
     }
@@ -99,6 +101,14 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     private void invokeAwareMethods(final String beanName, final Object bean) {
         if (bean instanceof Aware) {
             logger.info(beanName+"检查Aware相关接口并设置相关依赖");
+        }
+    }
+
+    //初始化方法
+    protected void invokeInitMethods(String beanName, final Object bean, BeanDefinition mbd) {
+        if(bean instanceof InitializingBean) {
+            logger.info(beanName+"init-method");
+            ((InitializingBean) bean).afterPropertiesSet();
         }
     }
 
