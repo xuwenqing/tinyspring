@@ -58,10 +58,6 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
         //finishRefresh();
     }
 
-    public Object getBean(String name) {
-        return getBeanFactory().getBean(name);
-    }
-
     protected ConfigurableListableBeanFactory obtainFreshBeanFactory() {
         //调用子类实现
         refreshBeanFactory();
@@ -74,6 +70,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
     //---------------------------------------------------------------------
     public AutowireCapableBeanFactory getAutowireCapableBeanFactory() {
         return getBeanFactory();
+    }
+
+    //BeanFactory中的接口
+    public Object getBean(String name) {
+        return getBeanFactory().getBean(name);
     }
 
     /*
