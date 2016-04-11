@@ -60,6 +60,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
         //开始进行依赖注入过程，先处理autowire的注入
         //使用InstantiationAwareBeanPostProcessors处理属性值
+        //用户自定义类型转换
 
         //对属性进行普通依赖注入
         if(pvs!=null && pvs.getPropertyValues() != null)
