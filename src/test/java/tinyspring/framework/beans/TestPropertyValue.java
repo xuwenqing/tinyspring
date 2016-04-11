@@ -1,10 +1,6 @@
-package tinyspring.framework.beans.factory;
+package tinyspring.framework.beans;
 
-import tinyspring.framework.beans.BeanWrapper;
-import tinyspring.framework.beans.BeanWrapperImpl;
-import tinyspring.framework.beans.PropertyValue;
-import tinyspring.framework.beans.PropertyValues;
-import tinyspring.framework.beans.factory.support.RootBeanDefinition;
+import tinyspring.framework.beans.support.RootBeanDefinition;
 
 /**
  * Created by wenqing on 2016/4/9.

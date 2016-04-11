@@ -1,4 +1,4 @@
-package tinyspring.framework.beans.factory;
+package tinyspring.framework.beans;
 
 /**
  * Created by OGC on 2016/4/8.

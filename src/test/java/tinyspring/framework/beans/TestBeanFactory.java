@@ -1,16 +1,14 @@
-package tinyspring.framework.beans.factory;
+package tinyspring.framework.beans;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import tinyspring.framework.beans.factory.xml.XmlBeanFactory;
+import tinyspring.framework.beans.config.*;
+import tinyspring.framework.beans.xml.XmlBeanFactory;
+import tinyspring.framework.beans.support.BeanDefinitionRegistry;
+import tinyspring.framework.beans.support.RootBeanDefinition;
+import tinyspring.framework.beans.xml.XmlBeanDefinitionReader;
 import tinyspring.framework.core.io.DefaultResourceLoader;
-import tinyspring.framework.beans.PropertyValue;
-import tinyspring.framework.beans.PropertyValues;
-import tinyspring.framework.beans.factory.config.*;
-import tinyspring.framework.beans.factory.support.BeanDefinitionRegistry;
-import tinyspring.framework.beans.factory.support.DefaultListableBeanFactory;
-import tinyspring.framework.beans.factory.support.RootBeanDefinition;
-import tinyspring.framework.beans.factory.xml.XmlBeanDefinitionReader;
+import tinyspring.framework.beans.support.DefaultListableBeanFactory;
 
 public class TestBeanFactory {
 
