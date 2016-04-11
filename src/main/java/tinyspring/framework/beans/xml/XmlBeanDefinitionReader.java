@@ -1,12 +1,13 @@
-package tinyspring.framework.beans.factory.xml;
+package tinyspring.framework.beans.xml;
 
 import org.junit.Assert;
 import tinyspring.framework.core.io.Resource;
 import org.w3c.dom.Document;
 import org.xml.sax.InputSource;
 import tinyspring.framework.beans.BeansException;
-import tinyspring.framework.beans.factory.support.AbstractBeanDefinitionReader;
-import tinyspring.framework.beans.factory.support.BeanDefinitionRegistry;
+import tinyspring.framework.beans.support.AbstractBeanDefinitionReader;
+import tinyspring.framework.beans.support.BeanDefinitionRegistry;
+import tinyspring.framework.core.io.ResourceLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +22,29 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 
     public XmlBeanDefinitionReader(BeanDefinitionRegistry registry) {
         super(registry);
+    }
+
+    public void loadBeanDefinitions(String... location) throws BeansException {
+        for(String loc : location) {
+            loadBeanDefinitions(loc);
+        }
+    }
+
+    public void loadBeanDefinitions(String location) throws BeansException {
+        ResourceLoader resourceLoader = getResourceLoader();
+        if (resourceLoader == null) {
+            throw new BeansException(
+                    "Cannot import bean definitions from location [" + location + "]: no ResourceLoader available");
+        }
+        Resource resource = resourceLoader.getResource(location);
+        loadBeanDefinitions(resource);
+    }
+
+    public void loadBeanDefinitions(Resource... resources) throws BeansException {
+        Assert.assertNotNull(resources);
+        for (Resource resource : resources) {
+            loadBeanDefinitions(resource);
+        }
     }
 
     public void loadBeanDefinitions(Resource resource) throws BeansException {
@@ -40,6 +64,8 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
             throw new BeansException("IOException parsing XML document from " + resource, ex);
         }
     }
+
+
 
     /**
      * 真正的核心处理部分
