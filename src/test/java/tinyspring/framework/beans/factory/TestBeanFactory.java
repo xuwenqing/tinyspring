@@ -3,7 +3,7 @@ package tinyspring.framework.beans.factory;
 import org.junit.Ignore;
 import org.junit.Test;
 import tinyspring.framework.beans.factory.xml.XmlBeanFactory;
-import tinyspring.springframework.core.io.DefaultResourceLoader;
+import tinyspring.framework.core.io.DefaultResourceLoader;
 import tinyspring.framework.beans.PropertyValue;
 import tinyspring.framework.beans.PropertyValues;
 import tinyspring.framework.beans.factory.config.*;
