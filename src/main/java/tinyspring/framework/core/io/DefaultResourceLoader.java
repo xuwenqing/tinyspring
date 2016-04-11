@@ -27,7 +27,13 @@ public class DefaultResourceLoader implements ResourceLoader {
 
     public Resource getResource(String location) {
         Assert.assertNotNull(location, "Location must not be null");
-        return new ClassPathResource(location,getClassLoader());
+        //以后可用于FileSystemXmlApplicationContext的扩展
+        //覆写getResourceByPath方法
+        return getResourceByPath(location);
+    }
+
+    protected Resource getResourceByPath(String path) {
+        return new ClassPathResource(path, getClassLoader());
     }
 
 }
