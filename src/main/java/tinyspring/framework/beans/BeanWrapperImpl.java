@@ -26,7 +26,7 @@ public class BeanWrapperImpl implements BeanWrapper {
         }
     }
 
-     public void setPropertyValue(PropertyValue propertyValue) {
+    protected void setPropertyValue(PropertyValue propertyValue) {
         //进行依赖注入
         Object value = propertyValue.getValue();
         try {
