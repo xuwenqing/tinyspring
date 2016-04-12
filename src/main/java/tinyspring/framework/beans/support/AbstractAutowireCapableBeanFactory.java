@@ -12,7 +12,9 @@ import java.util.List;
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory
         implements AutowireCapableBeanFactory {
 
-    /** Strategy for creating bean instances */
+    /**
+     * Strategy for creating bean instances,策略模式
+     */
     private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();
 
     protected InstantiationStrategy getInstantiationStrategy() {
@@ -86,9 +88,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         bw.setPropertyValues(pvs);
     }
 
-    /**
-    对实例化对象在使用前进行aware接口处理,BeanPostProcessor前置处理，init-mthod处理，BeanPostProcessor后置处理
-     */
+    //对实例化对象在使用前进行aware接口处理,BeanPostProcessor前置处理，init-mthod处理，BeanPostProcessor后置处理
     protected Object initializeBean(final String beanName, final Object bean, BeanDefinition mbd) {
         invokeAwareMethods(beanName, bean);
         Object wrappedBean = bean;

@@ -7,6 +7,7 @@ import tinyspring.framework.beans.config.BeanPostProcessor;
 import java.util.ArrayList;
 import java.util.List;
 
+//实现ConfigurableBeanFactory中的接口
 public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
     /** BeanPostProcessors to apply in createBean */
@@ -35,7 +36,9 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
         return this.beanPostProcessors;
     }
 
+    //工厂方法模式
     protected abstract BeanDefinition getBeanDefinition(String beanName);
 
+    //工厂方法模式
     protected abstract Object createBean(String beanName, BeanDefinition mbd);
 }

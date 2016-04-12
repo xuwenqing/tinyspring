@@ -9,10 +9,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFactory
         implements ConfigurableListableBeanFactory, BeanDefinitionRegistry {
 
+    //BeanDefinition容器
+    private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
+
     public DefaultListableBeanFactory() {
     }
-
-    private final Map<String, BeanDefinition> beanDefinitionMap = new ConcurrentHashMap<String, BeanDefinition>(64);
 
     public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition) {
         beanDefinitionMap.put(beanName, beanDefinition);

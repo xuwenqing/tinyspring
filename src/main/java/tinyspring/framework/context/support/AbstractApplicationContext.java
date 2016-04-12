@@ -77,11 +77,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
         return getBeanFactory().getBean(name);
     }
 
-    /*
-     * 子类实现
-     */
+    //模板模式
     protected abstract void refreshBeanFactory() throws BeansException;
 
+    //工厂方法模式
     public abstract ConfigurableListableBeanFactory getBeanFactory();
 
 }
