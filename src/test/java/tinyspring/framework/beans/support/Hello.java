@@ -1,4 +1,4 @@
-package tinyspring.framework.beans;
+package tinyspring.framework.beans.support;
 
 /**
  * Created by wenqing on 2016/4/9.

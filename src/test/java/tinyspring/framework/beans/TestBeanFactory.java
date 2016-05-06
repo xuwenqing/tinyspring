@@ -1,14 +1,11 @@
 package tinyspring.framework.beans;
 
-import org.junit.Ignore;
 import org.junit.Test;
 import tinyspring.framework.beans.config.*;
+import tinyspring.framework.beans.support.*;
 import tinyspring.framework.beans.xml.XmlBeanFactory;
-import tinyspring.framework.beans.support.BeanDefinitionRegistry;
-import tinyspring.framework.beans.support.RootBeanDefinition;
 import tinyspring.framework.beans.xml.XmlBeanDefinitionReader;
 import tinyspring.framework.core.io.DefaultResourceLoader;
-import tinyspring.framework.beans.support.DefaultListableBeanFactory;
 
 public class TestBeanFactory {
 
@@ -23,7 +20,6 @@ public class TestBeanFactory {
         helloBean.hello();
     }
 
-    @Ignore
     @Test
     public void testXmlDefaultBeanFactory() throws Exception{
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
@@ -40,7 +36,6 @@ public class TestBeanFactory {
         reader.loadBeanDefinitions(new DefaultResourceLoader().getResource("beans.xml"));
     }
 
-    @Ignore
     @Test
     public void testCodeBeanFactory() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();

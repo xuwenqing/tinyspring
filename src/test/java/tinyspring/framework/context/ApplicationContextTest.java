@@ -1,6 +1,7 @@
-package tinyspring.framework.beans;
+package tinyspring.framework.context;
 
 import org.junit.Test;
+import tinyspring.framework.beans.support.HelloBean;
 import tinyspring.framework.context.support.ClassPathXmlApplicationContext;
 
 /**

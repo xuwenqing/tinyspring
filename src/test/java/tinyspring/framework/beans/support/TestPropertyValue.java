@@ -1,5 +1,10 @@
-package tinyspring.framework.beans;
+package tinyspring.framework.beans.support;
 
+import tinyspring.framework.beans.BeanWrapper;
+import tinyspring.framework.beans.BeanWrapperImpl;
+import tinyspring.framework.beans.PropertyValue;
+import tinyspring.framework.beans.PropertyValues;
+import tinyspring.framework.beans.support.HelloBean;
 import tinyspring.framework.beans.support.RootBeanDefinition;
 
 /**

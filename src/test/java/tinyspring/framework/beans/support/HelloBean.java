@@ -1,4 +1,6 @@
-package tinyspring.framework.beans;
+package tinyspring.framework.beans.support;
+
+import tinyspring.framework.beans.support.Hello;
 
 /**
  * Created by OGC on 2016/4/8.

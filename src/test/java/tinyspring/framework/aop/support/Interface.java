@@ -1,4 +1,4 @@
-package tinyspring.framework.aop.demo;
+package tinyspring.framework.aop.support;
 
 /**
  * Created by wenqing on 2016/5/5.

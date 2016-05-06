@@ -1,7 +1,8 @@
-package tinyspring.framework.beans;
+package tinyspring.framework.beans.support;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import tinyspring.framework.beans.BeansException;
 import tinyspring.framework.beans.config.BeanPostProcessor;
 
 /**
