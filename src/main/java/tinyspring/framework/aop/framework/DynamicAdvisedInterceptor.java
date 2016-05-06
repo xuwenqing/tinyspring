@@ -1,4 +1,4 @@
-package tinyspring.framework.aop;
+package tinyspring.framework.aop.framework;
 
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;

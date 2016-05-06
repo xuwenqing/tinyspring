@@ -1,9 +1,9 @@
-package tinyspring.framework.aop;
+package tinyspring.framework.aop.framework;
 
 /**
  * Created by wenqing on 2016/5/5.
  */
-public abstract class AbstractAopProxy implements AopProxy{
+public abstract class AbstractAopProxy implements AopProxy {
     private AdvisedSupport advisorSupport;
 
     public AbstractAopProxy(AdvisedSupport advisorSupport) {

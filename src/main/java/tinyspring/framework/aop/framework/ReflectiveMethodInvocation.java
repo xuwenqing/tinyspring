@@ -1,4 +1,4 @@
-package tinyspring.framework.aop;
+package tinyspring.framework.aop.framework;
 
 import org.aopalliance.intercept.MethodInvocation;
 

@@ -12,4 +12,5 @@ public class SimpleInterface implements Interface {
     public void doSomething(String args) {
         System.out.println("doSomething " + args);
     }
+
 }

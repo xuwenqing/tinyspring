@@ -5,6 +5,10 @@ import org.junit.Test;
 import tinyspring.framework.aop.demo.Interface;
 import tinyspring.framework.aop.demo.SimpleClass;
 import tinyspring.framework.aop.demo.SimpleInterface;
+import tinyspring.framework.aop.framework.AdvisedSupport;
+import tinyspring.framework.aop.framework.AopProxy;
+import tinyspring.framework.aop.framework.CglibAopProxy;
+import tinyspring.framework.aop.framework.TargetSource;
 
 /**
  * Created by wenqing on 2016/5/5.
@@ -13,7 +17,7 @@ public class CglibAopProxyTest {
     @Test
     public void testInterface() {
         TargetSource targetSource = new TargetSource(new SimpleInterface(),SimpleInterface.class,new Class[]{Interface.class});
-        AdvisorSupport advisorSupport = new AdvisorSupport();
+        AdvisedSupport advisorSupport = new AdvisedSupport();
         advisorSupport.setTargetSource(targetSource);
 
         MethodInterceptor methodInterceptor = new SimpleMethodInterceptor();
@@ -29,7 +33,7 @@ public class CglibAopProxyTest {
     @Test
     public void testClass() {
         TargetSource targetSource = new TargetSource(new SimpleClass(),SimpleClass.class,null);
-        AdvisorSupport advisorSupport = new AdvisorSupport();
+        AdvisedSupport advisorSupport = new AdvisedSupport();
         advisorSupport.setTargetSource(targetSource);
 
         MethodInterceptor methodInterceptor = new SimpleMethodInterceptor();
