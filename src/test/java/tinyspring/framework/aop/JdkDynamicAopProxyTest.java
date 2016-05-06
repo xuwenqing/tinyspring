@@ -8,6 +8,7 @@ import tinyspring.framework.aop.framework.AdvisedSupport;
 import tinyspring.framework.aop.framework.AopProxy;
 import tinyspring.framework.aop.framework.JdkDynamicAopProxy;
 import tinyspring.framework.aop.framework.TargetSource;
+import tinyspring.framework.aop.support.AspectJExpressionPointcut;
 
 /**
  * Created by wenqing on 2016/5/5.
@@ -21,6 +22,12 @@ public class JdkDynamicAopProxyTest {
 
         MethodInterceptor methodInterceptor = new SimpleMethodInterceptor();
         advisorSupport.setMethodInterceptor(methodInterceptor);
+
+        String expression = "execution(* tinyspring.framework.aop.demo.*.*(..))";
+        AspectJExpressionPointcut aspectJExpressionPointcut = new AspectJExpressionPointcut();
+        aspectJExpressionPointcut.setExpression(expression);
+        advisorSupport.setMethodMatcher(aspectJExpressionPointcut);
+
 
         AopProxy aopProxy = new JdkDynamicAopProxy(advisorSupport);
         Interface anInterface = (Interface)aopProxy.getProxy();
