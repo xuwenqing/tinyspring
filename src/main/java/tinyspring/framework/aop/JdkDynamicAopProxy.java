@@ -12,7 +12,7 @@ import java.lang.reflect.Proxy;
  */
 public class JdkDynamicAopProxy extends AbstractAopProxy implements InvocationHandler{
 
-    public JdkDynamicAopProxy(AdvisorSupport advisorSupport) {
+    public JdkDynamicAopProxy(AdvisedSupport advisorSupport) {
         super(advisorSupport);
     }
 

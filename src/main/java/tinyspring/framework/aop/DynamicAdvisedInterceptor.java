@@ -9,11 +9,11 @@ import java.lang.reflect.Method;
 /**
  * Created by wenqing on 2016/5/5.
  */
-public class CglibDynamicMethodIntercetor implements MethodInterceptor {
+public class DynamicAdvisedInterceptor implements MethodInterceptor {
 
-    private AdvisorSupport advisorSupport;
+    private AdvisedSupport advisorSupport;
 
-    public CglibDynamicMethodIntercetor(AdvisorSupport advisorSupport) {
+    public DynamicAdvisedInterceptor(AdvisedSupport advisorSupport) {
         this.advisorSupport = advisorSupport;
     }
 

@@ -7,7 +7,7 @@ import net.sf.cglib.proxy.Enhancer;
  */
 public class CglibAopProxy extends AbstractAopProxy {
 
-    public CglibAopProxy(AdvisorSupport advisorSupport) {
+    public CglibAopProxy(AdvisedSupport advisorSupport) {
         super(advisorSupport);
     }
 
@@ -16,7 +16,7 @@ public class CglibAopProxy extends AbstractAopProxy {
         TargetSource targetSource = getAdvisorSupport().getTargetSource();
         enhancer.setSuperclass(targetSource.getTargetClass());
         enhancer.setInterfaces(targetSource.getInterfaceClasses());
-        enhancer.setCallback(new CglibDynamicMethodIntercetor(getAdvisorSupport()));
+        enhancer.setCallback(new DynamicAdvisedInterceptor(getAdvisorSupport()));
         return enhancer.create();
     }
 }
