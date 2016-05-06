@@ -2,6 +2,7 @@ package tinyspring.framework.aop.framework;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import tinyspring.framework.aop.MethodMatcher;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -22,9 +23,16 @@ public class JdkDynamicAopProxy extends AbstractAopProxy implements InvocationHa
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+
+        MethodMatcher methodMatcher = getAdvisorSupport().getMethodMatcher();
         TargetSource targetSource = getAdvisorSupport().getTargetSource();
-        MethodInvocation methodInvocation = new ReflectiveMethodInvocation(targetSource.getTargetObject(),method,args);
-        MethodInterceptor methodInterceptor = getAdvisorSupport().getMethodInterceptor();
-        return methodInterceptor.invoke(methodInvocation);
+
+        if (methodMatcher != null && methodMatcher.matches(method, targetSource.getTargetClass())) {
+            MethodInvocation methodInvocation = new ReflectiveMethodInvocation(targetSource.getTargetObject(), method, args);
+            MethodInterceptor methodInterceptor = getAdvisorSupport().getMethodInterceptor();
+            return methodInterceptor.invoke(methodInvocation);
+        }
+
+        return method.invoke(targetSource.getTargetObject(), args);
     }
 }
