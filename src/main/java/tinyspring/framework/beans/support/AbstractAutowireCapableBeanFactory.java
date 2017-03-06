@@ -24,11 +24,6 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return this.instantiationStrategy;
     }
 
-    public <T> T createBean(Class<T> beanClass) {
-        RootBeanDefinition mbd = new RootBeanDefinition(beanClass);
-        return (T) createBean(beanClass.getName(), mbd);
-    }
-
     /**
      * bean的实例化过程
      * @param beanName
