@@ -14,7 +14,6 @@ public class TestBeanFactory {
         XmlBeanFactory beanFactory = new XmlBeanFactory(new DefaultResourceLoader().getResource("beans.xml"));
         addBeanPostProcessor(beanFactory);
         //xmlBeanDefinitionRegistry(beanFactory);
-        beanFactory.getBean("aware");
         beanFactory.getBean("init");
         HelloBean helloBean = (HelloBean) beanFactory.getBean("helloBean");
         helloBean.hello();
@@ -25,7 +24,6 @@ public class TestBeanFactory {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
         addBeanPostProcessor(beanFactory);
         xmlBeanDefinitionRegistry(beanFactory);
-        beanFactory.getBean("aware");
         beanFactory.getBean("init");
         HelloBean helloBean = (HelloBean) beanFactory.getBean("helloBean");
         helloBean.hello();
@@ -42,7 +40,6 @@ public class TestBeanFactory {
         registryInit(beanFactory);
         addBeanPostProcessor(beanFactory);
         beanDefinitionRegistry(beanFactory);
-        beanFactory.getBean("aware");
         beanFactory.getBean("init");
         HelloBean helloBean = (HelloBean) beanFactory.getBean("helloBean");
         helloBean.hello();

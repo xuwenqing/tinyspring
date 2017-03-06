@@ -10,10 +10,10 @@ import tinyspring.framework.context.support.ClassPathXmlApplicationContext;
 public class ApplicationContextTest {
 
     @Test
-    public void init() {
+    public void test() {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         HelloBean helloBean = (HelloBean) context.getBean("helloBean");
         helloBean.hello();
-        context.getBean("init");
+        //context.getBean("init");
     }
 }
