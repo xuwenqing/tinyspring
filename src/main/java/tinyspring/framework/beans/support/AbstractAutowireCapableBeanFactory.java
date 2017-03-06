@@ -9,11 +9,15 @@ import tinyspring.framework.beans.config.BeanPostProcessor;
 
 import java.util.List;
 
+/**
+ * 该类实际调用实例化策略创建Bean对象
+ * 并对创建后的对象执行初始化方法，BeanPostProcessors的方法
+ */
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory
         implements AutowireCapableBeanFactory {
 
     /**
-     * Strategy for creating bean instances,策略模式
+     * 实例化bean的策略
      */
     private InstantiationStrategy instantiationStrategy = new SimpleInstantiationStrategy();
 
@@ -26,7 +30,12 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return (T) createBean(beanClass.getName(), mbd);
     }
 
-    //bean的实例化过程
+    /**
+     * bean的实例化过程
+     * @param beanName
+     * @param mbd
+     * @return 返回创建的bean
+     */
     @Override
     protected Object createBean(String beanName, BeanDefinition mbd) {
         //实例化bean对象
@@ -35,10 +44,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         Object exposedObject = instanceWrapper.getWrappedInstance();
         //解决循环依赖，将新创建的bean注册到单例容器中，spring源码采用ObjectFactory的方式
         registerSingleton(beanName, exposedObject);
-        //设置对象属性
+        //设置对象属性，依赖注入
         populateBean(mbd, instanceWrapper);
         if (exposedObject != null) {
-            //对实例化对象在使用前进行aware接口处理,BeanPostProcessor前置处理，init-mthod处理，BeanPostProcessor后置处理
+            //对实例化对象在使用前进行aware接口处理,BeanPostProcessor前置处理，init-method处理，BeanPostProcessor后置处理
             exposedObject = initializeBean(beanName, exposedObject, mbd);
         }
         return exposedObject;
@@ -103,7 +112,6 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     //检查Aware相关接口
     private void invokeAwareMethods(final String beanName, final Object bean) {
         if (bean instanceof Aware) {
-            logger.info(beanName+"检查Aware相关接口并设置相关依赖");
         }
     }
 
