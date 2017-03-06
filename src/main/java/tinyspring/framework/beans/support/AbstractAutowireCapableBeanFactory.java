@@ -110,8 +110,6 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     //检查Aware相关接口
     private void invokeAwareMethods(final String beanName, final Object bean) {
-        if (bean instanceof Aware) {
-        }
     }
 
     //初始化方法
