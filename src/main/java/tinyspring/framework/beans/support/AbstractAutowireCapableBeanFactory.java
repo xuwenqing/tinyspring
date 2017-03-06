@@ -32,7 +32,9 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         //实例化bean对象
         BeanWrapper instanceWrapper = createBeanInstance(mbd);
         //bean实例
-        Object exposedObject = (instanceWrapper != null ? instanceWrapper.getWrappedInstance() : null);
+        Object exposedObject = instanceWrapper.getWrappedInstance();
+        //解决循环依赖，将新创建的bean注册到单例容器中，spring源码采用ObjectFactory的方式
+        registerSingleton(beanName, exposedObject);
         //设置对象属性
         populateBean(mbd, instanceWrapper);
         if (exposedObject != null) {
