@@ -1,0 +1,17 @@
+<beans>
+    <bean id="outputService" class="tinyspring.framework.aop.support.OutputServiceImpl">
+    </bean>
+
+    <bean id="helloWorldService" class="tinyspring.framework.aop.support.HelloWorldServiceImpl">
+        <property name="text" value="Hello World!"></property>
+        <property name="outputService" ref="outputService"></property>
+    </bean>
+
+    <bean id="autoProxyCreator" class="tinyspring.framework.aop.support.AspectJAwareAdvisorAutoProxyCreator"></bean>
+    <bean id="timeInterceptor" class="tinyspring.framework.aop.support.TimerInterceptor"></bean>
+    <bean id="aspectjAspect" class="tinyspring.framework.aop.support.AspectJExpressionPointcutAdvisor">
+        <property name="advice" ref="timeInterceptor"></property>
+        <property name="expression" value="execution(* tinyspring.framework.aop.*.*(..))"></property>
+    </bean>
+
+</beans>
