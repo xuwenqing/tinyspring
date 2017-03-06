@@ -14,12 +14,12 @@ public class TestBeanPostProcessor implements BeanPostProcessor{
     protected final Log logger = LogFactory.getLog(getClass());
 
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        logger.info("postProcessBeforeInitialization"+bean);
+        logger.info("TestBeanPostProcessor "+bean);
         return bean;
     }
 
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
-        logger.info("postProcessAfterInitialization" + bean);
+        logger.info("postProcessAfterInitialization " + bean);
         return bean;
     }
 }

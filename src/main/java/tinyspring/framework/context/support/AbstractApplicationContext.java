@@ -2,9 +2,12 @@ package tinyspring.framework.context.support;
 
 import tinyspring.framework.beans.BeansException;
 import tinyspring.framework.beans.config.AutowireCapableBeanFactory;
+import tinyspring.framework.beans.config.BeanPostProcessor;
 import tinyspring.framework.beans.config.ConfigurableListableBeanFactory;
 import tinyspring.framework.context.ConfigurableApplicationContext;
 import tinyspring.framework.core.io.DefaultResourceLoader;
+
+import java.util.List;
 
 /**
  * Created by wenqing on 2016/4/11.
@@ -27,7 +30,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
         ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
         // 为BeanFactory配置容器特性，例如类加载器、事件处理器，BeanPostProcessor,设置IgnoreAware等.
-        // prepareBeanFactory(beanFactory);
+        prepareBeanFactory(beanFactory);
 
         // 设置BeanFactory的后置处理（BeanFactoryPostProcessor）.比如PropertyEditorRegistrar，PlaceHolder
         //postProcessBeanFactory(beanFactory);
@@ -65,9 +68,18 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
         return beanFactory;
     }
 
-    //---------------------------------------------------------------------
+    private void prepareBeanFactory(ConfigurableListableBeanFactory beanFactory) {
+        registerBeanPostProcessors(beanFactory);
+    }
+
+    private void registerBeanPostProcessors(ConfigurableListableBeanFactory beanFactory) {
+        List<Object> beanPostProcessors = beanFactory.getBeansForType(BeanPostProcessor.class);
+        for (Object beanPostProcessor : beanPostProcessors) {
+            beanFactory.addBeanPostProcessor((BeanPostProcessor) beanPostProcessor);
+        }
+    }
+
     // 实现ApplicationContext中的接口
-    //---------------------------------------------------------------------
     public AutowireCapableBeanFactory getAutowireCapableBeanFactory() {
         return getBeanFactory();
     }

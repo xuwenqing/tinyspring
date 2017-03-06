@@ -5,7 +5,8 @@
         <property name="hello" ref="hello">
         </property>
     </bean>
+
+    <bean id="testBeanPostProcessor" class="tinyspring.framework.beans.support.TestBeanPostProcessor"></bean>
     <bean id="hello" class="tinyspring.framework.beans.support.Hello"></bean>
-    <bean id="aware" class="tinyspring.framework.beans.support.BeanAware"></bean>
     <bean id="init" class="tinyspring.framework.beans.support.InitMethod"></bean>
 </beans>

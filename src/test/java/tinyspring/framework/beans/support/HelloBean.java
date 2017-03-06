@@ -16,4 +16,12 @@ public class HelloBean {
     public void hello() {
         System.out.println("hello beanfactory..."+hello+" "+stringbean);
     }
+
+    @Override
+    public String toString() {
+        return "HelloBean{" +
+                "hello=" + hello +
+                ", stringbean='" + stringbean + '\'' +
+                '}'+ '\n';
+    }
 }

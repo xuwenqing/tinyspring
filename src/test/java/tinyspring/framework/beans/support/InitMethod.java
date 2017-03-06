@@ -7,6 +7,6 @@ import tinyspring.framework.beans.InitializingBean;
  */
 public class InitMethod implements InitializingBean {
     public void afterPropertiesSet() {
-        System.out.println("invoke InitMethod afterPropertiesSet");
+        System.out.println("InitializingBean.afterPropertiesSet()");
     }
 }

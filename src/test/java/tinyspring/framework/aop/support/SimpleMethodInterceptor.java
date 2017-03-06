@@ -10,7 +10,8 @@ public class SimpleMethodInterceptor implements MethodInterceptor {
 
     public Object invoke(MethodInvocation invocation) throws Throwable {
         System.out.println("SimpleMethodInterceptor doSomething");
+        Object o = invocation.proceed();
         System.out.println(invocation.getMethod());
-        return invocation.proceed();
+        return o;
     }
 }

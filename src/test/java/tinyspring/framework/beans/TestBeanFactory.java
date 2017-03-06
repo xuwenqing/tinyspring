@@ -13,7 +13,7 @@ public class TestBeanFactory {
     public void testXmlBeanFactory() {
         XmlBeanFactory beanFactory = new XmlBeanFactory(new DefaultResourceLoader().getResource("beans.xml"));
         addBeanPostProcessor(beanFactory);
-        xmlBeanDefinitionRegistry(beanFactory);
+        //xmlBeanDefinitionRegistry(beanFactory);
         beanFactory.getBean("aware");
         beanFactory.getBean("init");
         HelloBean helloBean = (HelloBean) beanFactory.getBean("helloBean");
@@ -39,7 +39,6 @@ public class TestBeanFactory {
     @Test
     public void testCodeBeanFactory() {
         DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
-        registryAware(beanFactory);
         registryInit(beanFactory);
         addBeanPostProcessor(beanFactory);
         beanDefinitionRegistry(beanFactory);
@@ -57,11 +56,6 @@ public class TestBeanFactory {
     public void registryInit(BeanDefinitionRegistry registry) {
         BeanDefinition bd_init = new RootBeanDefinition(InitMethod.class);
         registry.registerBeanDefinition("init", bd_init);
-    }
-
-    public void registryAware(BeanDefinitionRegistry registry) {
-        BeanDefinition bd_aware = new RootBeanDefinition(BeanAware.class);
-        registry.registerBeanDefinition("aware", bd_aware);
     }
 
     public void beanDefinitionRegistry(BeanDefinitionRegistry registry) {

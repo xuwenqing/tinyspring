@@ -14,7 +14,6 @@ public class ApplicationContextTest {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
         HelloBean helloBean = (HelloBean) context.getBean("helloBean");
         helloBean.hello();
-        context.getBean("aware");
         context.getBean("init");
     }
 }
