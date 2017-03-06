@@ -2,7 +2,6 @@ package tinyspring.framework.beans.support;
 
 import tinyspring.framework.beans.*;
 import tinyspring.framework.beans.config.BeanDefinition;
-import tinyspring.framework.beans.Aware;
 import tinyspring.framework.beans.InitializingBean;
 import tinyspring.framework.beans.config.AutowireCapableBeanFactory;
 import tinyspring.framework.beans.config.BeanPostProcessor;
