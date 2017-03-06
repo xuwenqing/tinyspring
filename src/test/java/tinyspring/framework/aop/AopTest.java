@@ -11,7 +11,6 @@ import tinyspring.framework.context.support.ClassPathXmlApplicationContext;
 public class AopTest {
     @Test
     public void testInterceptor() throws Exception {
-        // --------- helloWorldService without AOP
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("aop.xml");
         HelloWorldService helloWorldService = (HelloWorldService) applicationContext.getBean("helloWorldService");
         helloWorldService.helloWorld();
