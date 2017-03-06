@@ -89,6 +89,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
         return getBeanFactory().getBean(name);
     }
 
+    public List<Object> getBeansForType(Class clazz) {
+        return getBeanFactory().getBeansForType(clazz);
+    }
+
     //模板模式
     protected abstract void refreshBeanFactory() throws BeansException;
 
