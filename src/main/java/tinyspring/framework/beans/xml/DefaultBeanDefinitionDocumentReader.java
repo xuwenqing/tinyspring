@@ -20,7 +20,7 @@ public class DefaultBeanDefinitionDocumentReader implements BeanDefinitionDocume
     private BeanDefinitionRegistry beanDefinitionRegistry;
 
     public void registerBeanDefinitions(Document doc, BeanDefinitionRegistry beanDefinitionRegistry) {
-        logger.debug("Loading bean definitions");
+        logger.info("Loading bean definitions");
         this.beanDefinitionRegistry = beanDefinitionRegistry;
         Element root = doc.getDocumentElement();
         doRegisterBeanDefinitions(root);
