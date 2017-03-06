@@ -9,8 +9,14 @@
 
     <bean id="autoProxyCreator" class="tinyspring.framework.aop.support.AspectJAwareAdvisorAutoProxyCreator"></bean>
     <bean id="timeInterceptor" class="tinyspring.framework.aop.support.TimerInterceptor"></bean>
+    <bean id="logInterceptor" class="tinyspring.framework.aop.support.LogInterceptor"></bean>
+
     <bean id="aspectjAspect" class="tinyspring.framework.aop.support.AspectJExpressionPointcutAdvisor">
         <property name="advice" ref="timeInterceptor"></property>
+        <property name="expression" value="execution(* tinyspring.framework.aop.*.*(..))"></property>
+    </bean>
+    <bean id="aspectjAspect1" class="tinyspring.framework.aop.support.AspectJExpressionPointcutAdvisor">
+        <property name="advice" ref="logInterceptor"></property>
         <property name="expression" value="execution(* tinyspring.framework.aop.*.*(..))"></property>
     </bean>
 
