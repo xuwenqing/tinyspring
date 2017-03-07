@@ -22,12 +22,12 @@ public class DynamicAdvisedInterceptor implements MethodInterceptor {
         MethodMatcher methodMatcher = advisorSupport.getMethodMatcher();
         TargetSource targetSource = advisorSupport.getTargetSource();
 
-        //if (methodMatcher != null && methodMatcher.matches(method, targetSource.getTargetClass())) {
+        if (methodMatcher != null && methodMatcher.matches(method, targetSource.getTargetClass())) {
             MethodInvocation methodInvocation = new CglibMethodInvocation(targetSource.getTargetObject(), method, objects, methodProxy);
             org.aopalliance.intercept.MethodInterceptor methodInterceptor = advisorSupport.getMethodInterceptor();
             return methodInterceptor.invoke(methodInvocation);
-       // }
+        }
 
-       // return methodProxy.invoke(targetSource.getTargetObject(), objects);
+        return methodProxy.invoke(targetSource.getTargetObject(), objects);
     }
 }
