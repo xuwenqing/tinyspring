@@ -1,2 +1,3 @@
 # tinyspring
-通过对spring源码的阅读，简单模仿spring beans,context与aop的实现。
+阅读Spring相关到吗，简单模仿其实现，实现了依赖注入，xml读取等功能。
+
